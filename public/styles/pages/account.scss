@@ -1,0 +1,16 @@
+
+.account-list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .account-container{
+        display: flex;
+        align-items: center;
+        background-color: lightgray;
+        width:100%;
+        width:400px;
+        height:60px;
+        padding:0px 15px;
+    }
+}

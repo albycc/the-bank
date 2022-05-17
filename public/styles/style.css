@@ -10,4 +10,31 @@ ul, ol {
 html, body {
   height: 100%; }
 
+div.account-nav-menu-container nav.account-nav-bar ul.account-nav-list li {
+  display: inline-block;
+  margin: 20px; }
+
+header {
+  height: 80px;
+  width: 100vw;
+  background-color: orange; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.account-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .account-list-container .account-container {
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    width: 100%;
+    width: 400px;
+    height: 60px;
+    padding: 0px 15px; }
+
 /*# sourceMappingURL=style.css.map */

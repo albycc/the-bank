@@ -1,15 +1,11 @@
-*, *::before, *::after{
-    box-sizing: border-box;
-}
+//base
+@import './base/variables.scss';
+@import './base/reset.scss';
 
-*{
-    margin:0;
-}
+//layout
+@import './layout/navigation.scss';
+@import './layout/header.scss';
+@import './layout/page.scss';
 
-ul, ol{
-    list-style-type: none;
-}
-
-html, body{
-    height:100%;
-}
+//pages
+@import './pages/account.scss';
