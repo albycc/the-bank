@@ -1,0 +1,31 @@
+{
+  "name": "bank",
+  "version": "1.0.0",
+  "description": "School project of a bank application",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "npx nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albycc/the-bank.git"
+  },
+  "keywords": [
+    "bank",
+    "backend",
+    "js"
+  ],
+  "author": "Richard Walton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albycc/the-bank/issues"
+  },
+  "homepage": "https://github.com/albycc/the-bank#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  },
+  "type": "module"
+}
