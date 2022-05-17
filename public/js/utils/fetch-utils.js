@@ -10,8 +10,6 @@ async function fetchPost(url, data, parameters = {}){
         ...parameters
     }
 
-    console.log(options)
-
     try{
         const res = await fetch(url, options)
 
