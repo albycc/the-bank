@@ -6,3 +6,5 @@ await client.connect();
 const db = client.db('jsbackend-bank');
 
 export default db;
+
+export {ObjectId}

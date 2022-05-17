@@ -2,16 +2,22 @@
 <body>
     <%- include('../partials/header') %>
     <main>
+        <h1><%= username %></h1>
         <%- include('../partials/accountmenu') %>
         <div class="account-list-container">
-            <div class="account-container">
-                <span>Accout name</span>
-                <span>0000-0000-0000-0000</span>
-                <span>0 kr</span>
-            </div>
+            <% accountsData.forEach(account => { %>
+                <div class="account-container">
+                    <span><%= account.name %></span>
+                    <span><%= account.number %></span>
+                    <span><%= account.balance %></span>
+                </div>
+
+            <% }) %>
 
         </div>
     </main>
     
+    <script type="module" src="/js/pages/main.js"></script>
+    <script type="module" src="/js/pages/accountpage.js"></script>
 </body>
 </html>

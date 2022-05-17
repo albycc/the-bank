@@ -1,3 +1,5 @@
+import {fetchPost} from '../utils/fetch-utils.js'
+
 const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', async (e)=>{
@@ -11,18 +13,16 @@ loginForm.addEventListener('submit', async (e)=>{
         console.log(`${key}: ${formData.get(key)}`)
     }
 
-    const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
+    const resData = await fetchPost('api/login', data)
 
-    const loginData = await res.json();
+    if(resData.hasOwnProperty('error')){
+        alert(resData.error)
+        return;
+    }
+    else{
+        document.location.href = '/account'
+    }
 
-    console.log(loginData)
-    
-
+    console.log(resData)
 
 })
