@@ -2,14 +2,28 @@
 <body>
     <%- include('../partials/header') %>
     <main>
-        <%- include('../partials/accountmenu') %>
-        <div class="account-list-container">
-            <div class="account-container">
-                <p>nah</p>
-            </div>
+        <div class="formula-container">
+            <form action="/api/login" method="post" id="login-form">
+                <ul>
+                    <li>
+                        <label for="socialid">User Id</label>
+                        <br>
+                        <input type="text" name="socialid" id="socialid" value="19990101-0001">
+                    </li>
+                    <li>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" id="password" value="test">
+                    </li>
+                    <li>
+                        <button type="submit">Login</button>
+                    </li>
+                </ul>
+            </form>
 
         </div>
     </main>
+    <script type="module" src="/js/login.js"></script>
     
 </body>
 </html>
