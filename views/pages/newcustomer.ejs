@@ -1,0 +1,37 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <h1><%= title %></h1>
+        <div class="formula-container">
+            <form action="/register-customer" method="post" id="register-customer-form">
+                <ul>
+                    <li>
+                        <label for="name">Name</label>
+                        <br>
+                        <input type="text" name="name" id="name">
+                    </li>
+                    <li>
+                        <label for="social-id">Social id</label>
+                        <br>
+                        <input type="text" name="socialid" id="social-id">
+                    </li>
+                    <li>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" id="password">
+                    </li>
+                    <li>
+                        <button type="submit">Register</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <p><a href="/">Back to Login</a></p>
+
+    </main>
+
+    <script type="module" src="/js/pages/registerpage.js"></script>
+    
+</body>
+</html>
