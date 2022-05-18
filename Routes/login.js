@@ -2,15 +2,17 @@ import express from 'express';
 import db from '../db/connect.js'
 import { ObjectId } from '../db/connect.js';
 import bcrypt from 'bcrypt';
+import __dirname from '../utils/path.js'
 
 const router = express.Router();
 router.use(express.json())
 
 router.get('/', (req, res) =>{
-    res.render('pages/index', {
-        title:'Index'
-    })
+    console.log('/ router')
+    console.log(__dirname + 'public/pages/index.html')
+    res.sendFile('public/pages/index.html', { root: __dirname})
 })
+
 
 router.post('/api/login', async (req, res) =>{
     console.log('/api/login router')
@@ -38,9 +40,7 @@ router.post('/api/login', async (req, res) =>{
 
 
 router.get('/register', (req, res) =>{
-    res.render('pages/newcustomer', {
-        title:'Register'
-    })
+    res.sendFile('public/pages/newcustomer.html', { root: __dirname})
 })
 
 //create new customer and put in database
@@ -64,19 +64,26 @@ router.post('/register-customer', async (req, res) =>{
         const data = await db.collection('customers').insertOne({name, socialid, password:hash});
         console.log(data.insertedId.toString())
         const userData = await db.collection('customers').findOne({_id:ObjectId(data.insertedId.toString())});
+        await db.collection('accounts').insertOne({name:'Private account', number:generateAccountnumber(), balance:0, user:userData._id})
         req.session.user = userData;
         console.log(userData)
         res.json({success:true})
     }
 })
 
+function generateAccountnumber(){
+    let format = '1234-';
+    for(let i = 1; i < 10; i++){
+        const number = Math.floor(Math.random()*9);
+        format += number;
+    }
+    return format;
+}
 
-
-//TODO TODO TODO TODO
 
 router.get('/api/loggedin', (req, res) =>{
     if(req.session.user){
-        res.json({loggedIn:true})
+        res.json({user:req.session.user})
     }
     else{
         res.status(401).json({error:'Unauthorized'})

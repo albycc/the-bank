@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../db/connect.js'
 import { ObjectId } from '../db/connect.js';
+import __dirname from '../utils/path.js'
 
 const router = express.Router();
 
@@ -9,9 +10,7 @@ const userAccess = (req, res, next) =>{
         next();
     }
     else{
-        res.render('pages/unauthorized', {
-            title:'Unauthorized'
-        })
+        res.sendFile('public/pages/unauthorized.html', { root: __dirname})
     }
 }
 
@@ -22,18 +21,16 @@ router.get('/account', userAccess, async (req, res) =>{
     const accountsData = await db.collection('accounts').find({user:ObjectId(req.session.user._id)}).toArray();
 
     console.log(accountsData);
-    res.render('pages/account', {
-        title:'Account',
-        accountsData,
-        username: req.session.user.name
-    })
+    res.sendFile('public/pages/account.html', { root: __dirname})
 })
 
 
 router.get('/api/accounts', async (req, res) =>{
     console.log('/api/accounts')
 
-    const accountsData = await db.collection('accounts').find().toArray();
+    console.log(req.session.user)
+
+    const accountsData = await db.collection('accounts').find({user:ObjectId(req.session.user._id)}).toArray();
 
     res.json(accountsData)
 

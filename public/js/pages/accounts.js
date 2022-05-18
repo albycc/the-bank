@@ -1,4 +1,4 @@
-import {fetchPost} from '../utils/fetch-utils.js'
+import {fetchPost, fetchGet} from '../utils/fetch-utils.js'
 
 document.getElementById('logout-btn').addEventListener('click', async ()=>{
     console.log('logout');

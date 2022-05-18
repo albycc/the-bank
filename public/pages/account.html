@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Start</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button id="logout-btn">Logout</button>
+        </nav>
+    </header>
+    <main>
+        <div class="account-nav-menu-container">
+            <nav class="account-nav-bar">
+                <ul class="account-nav-list">
+                    <li><a href="/">My accounts</a></li>
+                    <li><a href="/register-account">Register</a></li>
+                    <li><a href="/transfer-account">Transfer</a></li>
+                    <li><a href="/delete-account">Delete</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id="title"></h1>
+        <div class="account-list-container"></div>
+        
+    </main>
+    <script type="module" src="/js/pages/accounts.js"></script>
+    <script type="module" src="/js/pages/accountpage.js"></script>
+    
+</body>
+</html>
