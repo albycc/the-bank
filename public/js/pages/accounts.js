@@ -10,3 +10,14 @@ document.getElementById('logout-btn').addEventListener('click', async ()=>{
     }
 
 })
+
+async function loadUser(){
+
+    const data = await fetchGet('/api/loggedin')
+
+    document.getElementById('username').innerText = data.user.name
+
+
+}
+
+loadUser()

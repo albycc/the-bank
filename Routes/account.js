@@ -2,6 +2,7 @@ import express from 'express';
 import db from '../db/connect.js'
 import { ObjectId } from '../db/connect.js';
 import __dirname from '../utils/path.js'
+import { generateAccountNumber } from '../utils/accountgenerator.js'
 
 const router = express.Router();
 
@@ -33,6 +34,28 @@ router.get('/api/accounts', async (req, res) =>{
     const accountsData = await db.collection('accounts').find({user:ObjectId(req.session.user._id)}).toArray();
 
     res.json(accountsData)
+
+})
+
+//get html page for registering accounts
+router.get('/register-account', userAccess, (req, res) =>{
+    res.sendFile('public/pages/accountregister.html', { root: __dirname})
+})
+
+router.post('/api/accounts', async (req, res) =>{
+    console.log('/api/account post router')
+
+    const accountData = req.body;
+
+    accountData.user = ObjectId(req.session.user._id);
+    accountData.number = generateAccountNumber()
+
+    console.log(req.body)
+    const data = await db.collection('accounts').insertOne(accountData);
+
+    console.log(data);
+
+    res.json({inserted:true})
 
 })
 
