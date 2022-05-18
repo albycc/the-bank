@@ -40,7 +40,6 @@ router.get('/delete-account', userAccess, (req, res) =>{
 router.get('/api/accounts', userAccess, async (req, res) =>{
     console.log('/api/accounts')
 
-    console.log(req.session.user)
 
     const accountsData = await db.collection('accounts').find({user:ObjectId(req.session.user._id)}).toArray();
 
@@ -59,7 +58,6 @@ router.post('/api/accounts',  async (req, res) =>{
     accountData.user = ObjectId(req.session.user._id);
     accountData.number = generateAccountNumber()
 
-    console.log(req.body)
     const data = await db.collection('accounts').insertOne(accountData);
 
     console.log(data);
@@ -82,7 +80,6 @@ router.post('/api/transfer', async (req, res) =>{
     const accountsCollection = db.collection('accounts');
 
     reqData.amount = +(reqData.amount);
-    console.log(reqData);
 
     const fromAccount = await accountsCollection.findOne({number:reqData.from});
 
