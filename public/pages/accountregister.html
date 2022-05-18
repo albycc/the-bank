@@ -15,9 +15,8 @@
         </nav>
     </header>
     <main>
-        <h1>Account</h1>
+        <h1>Register new account</h1>
         <div class="account-nav-menu-container">
-            
             <nav class="account-nav-bar">
                 <ul class="account-nav-list">
                     <li><a href="/account">My accounts</a></li>
@@ -27,13 +26,29 @@
                 </ul>
             </nav>
         </div>
-        <div class="account-list-container">
-
+        <div >
+            <form action="/api/accounts" method="post" id="register-form">
+                <ul>
+                    <li>
+                        <label for="name">Name</label>
+                        <br>
+                        <input type="text" name="name" id="name">
+                    </li>
+                    <li>
+                        <label for="balance">Amount</label>
+                        <br>
+                        <input type="number" name="balance" id="balance">
+                    </li>
+                    <li>
+                        <button type="submit">Register</button>
+                    </li>
+                </ul>
+            </form>
         </div>
         
     </main>
     <script type="module" src="/js/pages/accounts.js"></script>
-    <script type="module" src="/js/pages/accountpage.js"></script>
+    <script type="module" src="/js/pages/registeraccountpage.js"></script>
     
 </body>
 </html>
