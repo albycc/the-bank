@@ -9,7 +9,6 @@ router.use(express.json())
 
 router.get('/', (req, res) =>{
     console.log('/ router')
-    console.log(__dirname + 'public/pages/index.html')
     res.sendFile('public/pages/index.html', { root: __dirname})
 })
 
@@ -17,14 +16,11 @@ router.get('/', (req, res) =>{
 router.post('/api/login', async (req, res) =>{
     console.log('/api/login router')
     const {socialid, password} = req.body;
-    console.log(socialid, password)
     const userData = await db.collection('customers').findOne({socialid:socialid});
 
-    console.log(userData)
     const isMatch = await bcrypt.compare(password, userData.password);
 
     if(userData == null){
-        console.log('no such user')
         res.status(401).json({error:'No such user'})
     }
 
@@ -33,7 +29,6 @@ router.post('/api/login', async (req, res) =>{
     }
     else{
         req.session.user = userData;
-        console.log(req.session.user)
         res.json({user: userData})
     }
 })
@@ -46,14 +41,12 @@ router.get('/register', (req, res) =>{
 //create new customer and put in database
 router.post('/register-customer', async (req, res) =>{
     console.log('/register-customer router')
-    console.log(req.body)
 
     const customersCollection = await db.collection('customers');
     const customers = await customersCollection.find({}).toArray();
 
     if(customers.find(c => c.socialid == req.body.socialid)){
 
-        console.log('id already exists');
         res.json({error:'User with that id already exists'})
     }
     else{
@@ -62,7 +55,6 @@ router.post('/register-customer', async (req, res) =>{
         const saltRounds = 10;
         const hash = await bcrypt.hash(password, saltRounds)
         const data = await db.collection('customers').insertOne({name, socialid, password:hash});
-        console.log(data.insertedId.toString())
         const userData = await db.collection('customers').findOne({_id:ObjectId(data.insertedId.toString())});
         await db.collection('accounts').insertOne({name:'Private account', number:generateAccountnumber(), balance:0, user:userData._id})
         req.session.user = userData;
