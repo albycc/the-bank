@@ -3,7 +3,6 @@ import session from 'express-session'
 
 import accountRouter from './Routes/account.js';
 import loginRouter from './Routes/login.js';
-import registerRouter from './Routes/registeraccount.js'
 import __dirname from './utils/path.js'
 
 const app = express();
@@ -29,7 +28,6 @@ app.use(session({
 
 app.use(loginRouter)
 app.use(accountRouter)
-app.use(registerRouter)
 
 app.use((req, res, next) =>{
     res.sendFile('public/pages/404.html', { root: __dirname})
