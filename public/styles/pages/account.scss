@@ -10,8 +10,20 @@
         justify-content: space-between;
         background-color: lightgray;
         width:100%;
-        width:400px;
         height:60px;
         padding:0px 15px;
+        margin: 15px 0;
+        font-size: 1.2em;
+        span:nth-child(1){
+            width:200px;
+        }
+        span:nth-child(2){
+            width:200px;
+        }
+        span:nth-child(3){
+            width:110px;
+            text-align: end;
+            margin-right: 15px;
+        }
     }
 }

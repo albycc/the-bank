@@ -4,6 +4,12 @@ div.account-nav-menu-container{
             li{
                 display: inline-block;
                 margin: 20px;
+                a{
+                    color:blue;
+                    text-decoration: none;
+                    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    font-size: 1.3em;
+                }
             }
 
         }

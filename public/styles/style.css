@@ -10,16 +10,71 @@ ul, ol {
 html, body {
   height: 100%; }
 
+button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #758cf3;
+  color: white;
+  font-size: 1.1em;
+  margin: 15px 0px; }
+  button:hover {
+    cursor: pointer;
+    background-color: #596ecc; }
+
+input.delete-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: none; }
+  input.delete-btn:hover {
+    background-color: #ee5454; }
+
+a {
+  text-decoration: none;
+  color: blue;
+  font-size: 1.2em; }
+
+input, select {
+  border-radius: 9px;
+  border-style: 2px solid #313131;
+  background-color: white;
+  height: 40px;
+  font-size: 1.3em;
+  padding: 0px 10px; }
+
+label {
+  font-size: 1.4em; }
+
+form ul li {
+  margin: 15px 0px; }
+
 div.account-nav-menu-container nav.account-nav-bar ul.account-nav-list li {
   display: inline-block;
   margin: 20px; }
+  div.account-nav-menu-container nav.account-nav-bar ul.account-nav-list li a {
+    color: blue;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.3em; }
 
 header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 80px;
   width: 100vw;
   background-color: orange; }
+  header .header-menu-items {
+    display: flex;
+    align-items: center; }
+    header .header-menu-items * {
+      margin: 0px 15px; }
+    header .header-menu-items span.username {
+      font-size: 1.1em;
+      color: #751919; }
 
 main {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -34,8 +89,17 @@ main {
     justify-content: space-between;
     background-color: lightgray;
     width: 100%;
-    width: 400px;
     height: 60px;
-    padding: 0px 15px; }
+    padding: 0px 15px;
+    margin: 15px 0;
+    font-size: 1.2em; }
+    .account-list-container .account-container span:nth-child(1) {
+      width: 200px; }
+    .account-list-container .account-container span:nth-child(2) {
+      width: 200px; }
+    .account-list-container .account-container span:nth-child(3) {
+      width: 110px;
+      text-align: end;
+      margin-right: 15px; }
 
 /*# sourceMappingURL=style.css.map */
