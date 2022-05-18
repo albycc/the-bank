@@ -7,7 +7,7 @@ const accountContainer = (account) =>{
         <div class="account-container">
             <span> ${name}</span>
             <span> ${number}</span>
-            <span> ${balance}</span>
+            <span> ${balance} kr</span>
         </div>
     `
 }

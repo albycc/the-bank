@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>New Account</title>
+    <title>Transfer money</title>
 </head>
 <body>
     <header>
@@ -15,8 +15,9 @@
         </nav>
     </header>
     <main>
-        <h1>Register new account</h1>
+        <h1>Account</h1>
         <div class="account-nav-menu-container">
+            
             <nav class="account-nav-bar">
                 <ul class="account-nav-list">
                     <li><a href="/account">My accounts</a></li>
@@ -26,29 +27,35 @@
                 </ul>
             </nav>
         </div>
-        <div >
-            <form action="/api/accounts" method="post" id="register-form">
+        <div>
+            <form action="/api/transfer" method="post" id="form-transferaccounts">
                 <ul>
                     <li>
-                        <label for="name">Name</label>
+                        <label for="from">From</label>
                         <br>
-                        <input type="text" name="name" id="name">
+                        <select name="from" id="dropdown-from"></select>
                     </li>
                     <li>
-                        <label for="balance">Amount</label>
+                        <label for="to">To</label>
                         <br>
-                        <input type="number" name="balance" id="balance">
+                        <select name="to" id="dropdown-to"></select>
                     </li>
                     <li>
-                        <button type="submit">Register</button>
+                        <label for="amount">Amount</label>
+                        <br>
+                        <input type="number" name="amount" id="amount" value="0">
+                    </li>
+                    <li>
+                        <button type="submit">Send</button>
                     </li>
                 </ul>
             </form>
         </div>
         
+        
     </main>
     <script type="module" src="/js/pages/accounts.js"></script>
-    <script type="module" src="/js/pages/registeraccountpage.js"></script>
+    <script type="module" src="/js/pages/transferaccountpage.js"></script>
     
 </body>
 </html>
