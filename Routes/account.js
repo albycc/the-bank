@@ -9,7 +9,9 @@ const userAccess = (req, res, next) =>{
         next();
     }
     else{
-        res.redirect('/')
+        res.render('pages/unauthorized', {
+            title:'Unauthorized'
+        })
     }
 }
 
