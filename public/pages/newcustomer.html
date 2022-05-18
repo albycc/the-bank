@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Start</title>
+</head>
+<body>
+    <header>
+        <nav>
+        </nav>
+    </header>
+    <main>
+        <div class="formula-container">
+            <form action="/register-customer" method="post" id="register-customer-form">
+                <ul>
+                    <li>
+                        <label for="name">Name</label>
+                        <br>
+                        <input type="text" name="name" id="name">
+                    </li>
+                    <li>
+                        <label for="social-id">Social id</label>
+                        <br>
+                        <input type="text" name="socialid" id="social-id">
+                    </li>
+                    <li>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" id="password">
+                    </li>
+                    <li>
+                        <button type="submit">Register</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <p><a href="/register">New Account</a></p>
+    </main>
+    <script type="module" src="/js/pages/main.js"></script>
+    <script type="module" src="/js/pages/newcustomerpage.js"></script>
+    
+</body>
+</html>

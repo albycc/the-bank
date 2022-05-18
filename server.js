@@ -3,11 +3,15 @@ import session from 'express-session'
 
 import accountRouter from './Routes/account.js';
 import loginRouter from './Routes/login.js';
+import registerRouter from './Routes/registeraccount.js'
+import __dirname from './utils/path.js'
 
 const app = express();
 const port = 3000;
 
-app.use(express.static('public'));
+console.log(__dirname + '/public');
+
+app.use(express.static(__dirname + 'public'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -19,16 +23,16 @@ app.use(session({
     }
 }))
 
-app.set('view engine', 'ejs');
-app.set('views', './views');
+
+// app.set('view engine', 'html');
+// app.set('views', './views');
 
 app.use(loginRouter)
 app.use(accountRouter)
+app.use(registerRouter)
 
 app.use((req, res, next) =>{
-    res.status(404).render('pages/404', {
-        title:'error 404'
-    })
+    res.sendFile('public/pages/404.html', { root: __dirname})
 })
 
 app.listen(port, ()=>{
