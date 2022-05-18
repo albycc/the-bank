@@ -16,7 +16,6 @@ form.addEventListener('submit', async (e) =>{
         fetchData[key] = formData.get(key);
     }
 
-    console.log(fetchData)
     const data = await fetchPost('/api/accounts', fetchData)
 
     if(data.inserted){

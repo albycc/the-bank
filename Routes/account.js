@@ -31,8 +31,13 @@ router.get('/transfer-account', userAccess, (req, res) =>{
     res.sendFile('public/pages/accounttransfer.html', { root: __dirname})
 })
 
+router.get('/delete-account', userAccess, (req, res) =>{
+    res.sendFile('public/pages/accountdelete.html', { root: __dirname})
+})
+
+
 //api call: get users accounts
-router.get('/api/accounts', async (req, res) =>{
+router.get('/api/accounts', userAccess, async (req, res) =>{
     console.log('/api/accounts')
 
     console.log(req.session.user)
@@ -44,7 +49,7 @@ router.get('/api/accounts', async (req, res) =>{
 })
 
 //api post: create bank account
-router.post('/api/accounts', async (req, res) =>{
+router.post('/api/accounts',  async (req, res) =>{
     console.log('/api/account post router')
 
     const accountData = req.body;
@@ -63,17 +68,33 @@ router.post('/api/accounts', async (req, res) =>{
 
 })
 
+router.post('/api/delete', async (req, res) =>{
+    console.log('/api/delete router')
+
+    await db.collection('accounts').deleteOne({_id:ObjectId(req.body)})
+
+    res.json({success:true})
+})
+
 router.post('/api/transfer', async (req, res) =>{
     const reqData = req.body;
+
+    const accountsCollection = db.collection('accounts');
 
     reqData.amount = +(reqData.amount);
     console.log(reqData);
 
-    await db.collection('accounts').updateOne({number:reqData.from}, {$inc:{balance: -reqData.amount}});
-    await db.collection('accounts').updateOne({number:reqData.to}, {$inc:{balance: reqData.amount}});
+    const fromAccount = await accountsCollection.findOne({number:reqData.from});
 
-    res.json({success:true})
-
+    if(reqData.amount > fromAccount.balance){
+        res.json({error:'Amount exceeds balance in From account. Transaction canceled.'})
+    }
+    else{
+        await accountsCollection.updateOne({number:reqData.from}, {$inc:{balance: -reqData.amount}});
+        await accountsCollection.updateOne({number:reqData.to}, {$inc:{balance: reqData.amount}});
+    
+        res.json({success:true})
+    }
 })
 
 
