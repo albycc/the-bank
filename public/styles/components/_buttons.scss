@@ -1,0 +1,30 @@
+
+button{
+    padding:10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(117, 140, 243);
+    color:white;
+    font-size: 1.1em;
+    margin:15px 0px;
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(89, 110, 204);
+    }
+}
+
+input.delete-btn{
+    border:none;
+    cursor:pointer;
+    border-radius: none;
+
+    &:hover{
+        background-color: rgb(238, 84, 84);
+    }
+}
+
+a{
+    text-decoration: none;
+    color:blue;
+    font-size: 1.2em;
+}

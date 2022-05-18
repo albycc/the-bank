@@ -24,16 +24,19 @@ async function getAccounts(){
 
         const button = e.target;
 
-        const data = await fetchPost('/api/delete', {id:button.dataset.accountid});
-
-        if(data.success){
-
-            alert('Account deleted succeful.')
-            const accountContainer = button.parentElement;
+        if(window.confirm("Delete account?")){
+            const data = await fetchPost('/api/delete', {id:button.dataset.accountid});
     
-            accountContainer.parentElement.removeChild(accountContainer)
-
+            if(data.success){
+    
+                alert('Account deleted succeful.')
+                const accountContainer = button.parentElement;
+        
+                accountContainer.parentElement.removeChild(accountContainer)
+    
+            }
         }
+
     }))
 }
 

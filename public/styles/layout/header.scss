@@ -1,5 +1,19 @@
 header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     height:80px;
     width:100vw;
     background-color: orange;
+    .header-menu-items{
+        display: flex;
+        align-items: center;
+        & * {
+            margin:0px 15px;
+        }
+        span.username{
+            font-size: 1.1em;
+            color:rgb(117, 25, 25);
+        }
+    }
 }

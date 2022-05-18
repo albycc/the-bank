@@ -2,6 +2,10 @@
 @import './base/variables.scss';
 @import './base/reset.scss';
 
+//components
+@import './components/buttons.scss';
+@import './components/forms.scss';
+
 //layout
 @import './layout/navigation.scss';
 @import './layout/header.scss';
