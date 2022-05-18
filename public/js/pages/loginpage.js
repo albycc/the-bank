@@ -17,7 +17,6 @@ loginForm.addEventListener('submit', async (e)=>{
     }
     formData.forEach((value, key) => data[key] = value)
 
-    console.log(data)
     const resData = await fetchPost('api/login', data)
 
     if(resData.hasOwnProperty('error')){
@@ -27,7 +26,5 @@ loginForm.addEventListener('submit', async (e)=>{
     else{
         document.location.href = '/account'
     }
-
-    console.log(resData)
 
 })

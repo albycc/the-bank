@@ -15,11 +15,7 @@ const accountContainer = (account) =>{
 async function loadAccount(){
     const data = await fetchGet('/api/accounts')
 
-    console.log(data)
-
     const accountsList = document.querySelector('.account-list-container');
-
-    console.log(accountsList)
 
     accountsList.innerHTML += data.map(account => accountContainer(account)).join('');
 

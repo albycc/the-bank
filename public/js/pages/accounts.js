@@ -1,7 +1,6 @@
 import {fetchPost, fetchGet} from '../utils/fetch-utils.js'
 
 document.getElementById('logout-btn').addEventListener('click', async ()=>{
-    console.log('logout');
 
     const res = await fetchPost('/api/logout');
 
@@ -13,11 +12,23 @@ document.getElementById('logout-btn').addEventListener('click', async ()=>{
 
 async function loadUser(){
 
-    const data = await fetchGet('/api/loggedin')
+    const data = await fetchGet('/api/loggedin');
 
-    document.getElementById('username').innerText = data.user.name
-
-
+    if(data.error){
+        const main = document.getElementsByTagName('main')[0];
+        const header = document.getElementById('header-navbar');
+        main.innerHTML = `
+            <div>
+                <h1>Unauthorized</h1>
+                <p><a href="/">Login</a> to see content</p>
+            </div>
+        `
+        header.innerHTML = "";
+        main.innerHTML
+    }
+    else{
+        document.getElementById('username').innerText = data.user.name
+    }
 }
 
 loadUser()

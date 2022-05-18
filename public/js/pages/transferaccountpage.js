@@ -19,20 +19,22 @@ form.addEventListener('submit', async (e) =>{
         return;
     }
 
-    console.log(fetchData);
-
     const fromAccount = accounts.find(account => account.number == fetchData.from)
 
     if(fetchData.amount > fromAccount.balance ){
-        alert('Amount money is more than From account. Transaction canceled.')
+        alert('Amount exceeds balance in From account. Transaction canceled.');
+        return;
     }
-
-    console.log(fromAccount)
 
     const data = await fetchPost('/api/transfer', fetchData)
 
+    if(data.hasOwnProperty('error')){
+        alert(data.error);
+        return;
+    }
+
     if(data.success){
-        alert('Tranfer succesful')
+        alert('Transaction succesful.')
         document.location.reload()
     }
 

@@ -16,7 +16,6 @@ registerCustomerForm.addEventListener('submit', async (e)=>{
         registerData[key] = formData.get(key);
     }
 
-    console.log(registerData)
     const data = await fetchPost('/register-customer', registerData)
 
     if(data.hasOwnProperty('error')){
@@ -25,6 +24,5 @@ registerCustomerForm.addEventListener('submit', async (e)=>{
     if(data.success){
         document.location.href = '/account'
     }
-    console.log(data)
 
 })
