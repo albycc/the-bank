@@ -81,8 +81,12 @@ router.get('/api/loggedin', (req, res) =>{
     else{
         res.status(401).json({error:'Unauthorized'})
     }
+})
 
-
+router.post('/api/logout', (req, res) =>{
+    req.session.destroy(() =>{
+        res.json({loggedIn:false})
+    })
 })
 
 export default router;
